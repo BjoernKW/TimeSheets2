@@ -39,3 +39,5 @@ lib
 test
 tools/typings/tsd
 tmp
+
+.DS_Store
