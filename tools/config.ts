@@ -59,7 +59,8 @@ export const NPM_DEPENDENCIES = [
 
 // Declare local files that needs to be injected
 export const APP_ASSETS = [
-  { src: `${ASSETS_SRC}/main.css`, inject: true, dest: CSS_DEST }
+  { src: `${ASSETS_SRC}/main.css`, inject: true, dest: CSS_DEST },
+  { src: `${ASSETS_SRC}/scripts/lib/mite.js`, inject: true, dest: LIB_DEST }
 ];
 
 NPM_DEPENDENCIES
