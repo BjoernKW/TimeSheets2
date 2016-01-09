@@ -33,7 +33,7 @@ export const BUNDLES_DEST         = `${APP_DEST}/bundles`;
 export const CSS_DEST             = `${APP_DEST}/css`;
 export const FONTS_DEST           = `${APP_DEST}/fonts`;
 export const LIB_DEST             = `${APP_DEST}/lib`;
-export const APP_ROOT             = ENV === 'dev' ? `${APP_BASE}${APP_DEST}/` : `${APP_BASE}`;
+export const APP_ROOT             = ENV === 'dev' ? `${APP_BASE}${APP_DEST}/` : ENV !== 'prod' ? `${APP_BASE}` : `${APP_BASE}TimeSheets2/`;
 export const VERSION              = appVersion();
 
 export const VERSION_NPM          = '2.14.2';
