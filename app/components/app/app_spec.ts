@@ -1,9 +1,5 @@
 import {
-  TestComponentBuilder,
   describe,
-  expect,
-  injectAsync,
-  it,
   beforeEachProviders
 } from 'angular2/testing_internal';
 import {Component, View, provide, DirectiveResolver} from 'angular2/core';
@@ -12,7 +8,6 @@ import {Location, Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from 'angular
 import {SpyLocation} from 'angular2/src/mock/location_mock';
 import {RootRouter} from 'angular2/src/router/router';
 
-import {DOM} from 'angular2/src/platform/dom/dom_adapter';
 import {AppCmp} from './app';
 
 export function main() {
@@ -27,17 +22,6 @@ export function main() {
       provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppCmp}),
       provide(Router, {useClass: RootRouter})
     ]);
-
-    it('should work',
-      injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.overrideTemplate(TestComponent, '<div><app></app></div>')
-          .createAsync(TestComponent)
-          .then(rootTC => {
-            rootTC.detectChanges();
-            let appDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
-            expect(DOM.querySelectorAll(appDOMEl, 'section > nav > a')[1].href).toMatch(/http:\/\/localhost:\d+\/about/);
-          });
-      }));
   });
 }
 
