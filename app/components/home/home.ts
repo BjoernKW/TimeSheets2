@@ -26,9 +26,9 @@ export class HomeCmp {
 		this.defaultDate = this.formatDate(today);
 		this.currentYear = today.getFullYear();
 
-		this.projects = JSON.parse(localStorage['projects']);
-		this.timeEntries = JSON.parse(localStorage['timeEntries']);
-		this.totalMinutes = localStorage['totalMinutes'];
+		this.projects = localStorage['projects'] ? JSON.parse(localStorage['projects']) : [];
+		this.timeEntries = localStorage['timeEntries'] ? JSON.parse(localStorage['timeEntries']) : [];
+		this.totalMinutes = localStorage['totalMinutes'] ? localStorage['totalMinutes'] : 0;
 		this.totalHours = this.totalMinutes / 60;
 
 		if (!localStorage['startDate']) {
