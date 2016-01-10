@@ -1,15 +1,15 @@
 <div class="row">
 	<div class="col-lg-10">
 		<h1>{{ storage['headline'] }}</h1>
-		<h2 *ngIf="showProjectHeadline">{{ projectName }}, {{ displayStartDate }} - {{ displayEndDate }}</h2>
+		<h2 *ngIf="storage['showProjectHeadline']">{{ storage['projectName'] }}, {{ storage['displayStartDate'] }} - {{ storage['displayEndDate'] }}</h2>
 		<button *ngIf="!hideForms" (click)="hideForms = true" class="btn btn-primary btn-sm">Hide forms</button>
 		<button *ngIf="hideForms && !hideButtons" (click)="hideForms = false" class="btn btn-primary btn-sm">Show forms</button>
 		<button *ngIf="hideForms && !hideButtons" (click)="hideButtons = true" class="btn btn-default btn-sm">Hide buttons</button>
 	</div>
 	<div class="col-lg-2">
 		<br>
-		<button (click)="language = 'en'" class="btn btn-primary btn-sm">English</button>
-		<button (click)="language = 'de'" class="btn btn-primary btn-sm">German</button>
+		<button (click)="storage['language'] = 'en'" class="btn btn-primary btn-sm">English</button>
+		<button (click)="storage['language'] = 'de'" class="btn btn-primary btn-sm">German</button>
 	</div>
 </div>
 <hr>
@@ -64,12 +64,12 @@
 	<div class="col-lg-12">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
-				<tr *ngIf="language === 'en'">
+				<tr *ngIf="storage['language'] === 'en'">
 					<th>Person</th>
 					<th>Service</th>
 					<th>Date</th>
 					<th>Hours</th>
-				<tr *ngIf="language === 'de'">
+				<tr *ngIf="storage['language'] === 'de'">
 					<th>Person</th>
 					<th>Leistung</th>
 					<th>Datum</th>
@@ -77,11 +77,11 @@
 				</tr>
 			</thead>
 			<tfoot>
-				<tr *ngIf="language === 'en'">
+				<tr *ngIf="storage['language'] === 'en'">
 					<td colspan="3"><strong>Total</strong></td>
 					<td><strong>{{ totalHours }}</strong></td>
 				</tr>
-				<tr *ngIf="language === 'de'">
+				<tr *ngIf="storage['language'] === 'de'">
 					<td colspan="3"><strong>Gesamt </strong></td>
 					<td><strong>{{ totalHours }}</strong></td>
 				</tr>

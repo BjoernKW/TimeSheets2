@@ -13,11 +13,9 @@ export class HomeCmp {
 
 	storage = localStorage;
 
-	showProjectHeadline = false;
 	totalMinutes = 0;
 	totalHours = 0;
 
-	language = 'en';
 	currentYear;
 
 	projects = [];
@@ -48,6 +46,9 @@ export class HomeCmp {
 		if (!localStorage['totalMinutes']) {
 			localStorage['totalMinutes'] = this.totalMinutes;
 		}
+		if (!localStorage['language']) {
+			localStorage['language'] = 'en';
+		}
 	}
 
 	formatDateForDisplay(date: Date) {
@@ -66,7 +67,7 @@ export class HomeCmp {
 			}
 		);
 
-		this._ngZone.runOutsideAngular(() => {
+		this._ngZone.run(() => {
 			this.mite.Project.active(
 				data => {
 					var projects = [];
@@ -77,10 +78,9 @@ export class HomeCmp {
 					);
 
 					localStorage['projects'] = JSON.stringify(projects);
+					this.projects = JSON.parse(localStorage['projects']);
 				}
 			);
-
-			this._ngZone.run(() => { this.projects = JSON.parse(localStorage['projects']); });
 		});
 	}
 
@@ -94,7 +94,7 @@ export class HomeCmp {
 			);
 		}
 
-		this._ngZone.runOutsideAngular(() => {
+		this._ngZone.run(() => {
 			this.mite.Project.find(
 				localStorage['project'],
 				data => {
@@ -133,13 +133,10 @@ export class HomeCmp {
 
 					localStorage['timeEntries'] = JSON.stringify(timeEntries);
 					localStorage['totalMinutes'] = this.totalMinutes;
+					this.timeEntries = JSON.parse(localStorage['timeEntries']);
+					this.totalHours = this.totalMinutes / 60;
 				}
 			);
-
-			this._ngZone.run(() => {
-				this.timeEntries = JSON.parse(localStorage['timeEntries']);
-				this.totalHours = this.totalMinutes / 60;
-			});
 		});
     }
 }
