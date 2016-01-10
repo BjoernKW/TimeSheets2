@@ -74,12 +74,12 @@
 				</tr>
 			</thead>
 			<tfoot>
-				<tr *ngIf="storage['language'] === 'en'">
-					<td colspan="3"><strong>Total</strong></td>
-					<td><strong>{{ totalHours }}</strong></td>
-				</tr>
-				<tr *ngIf="storage['language'] === 'de'">
-					<td colspan="3"><strong>Gesamt </strong></td>
+				<tr>
+					<td colspan="2"></td>
+					<td>
+						<span *ngIf="storage['language'] === 'en'"><strong>Total</strong></span>
+						<span *ngIf="storage['language'] === 'de'"><strong>Gesamt </strong></span>
+					</td>
 					<td><strong>{{ totalHours }}</strong></td>
 				</tr>
 			</tfoot>
