@@ -2,18 +2,15 @@
 	<div class="col-lg-10">
 		<h1>{{ storage['headline'] }}</h1>
 		<h2 *ngIf="storage['showProjectHeadline']">{{ storage['projectName'] }}, {{ storage['displayStartDate'] }} - {{ storage['displayEndDate'] }}</h2>
-		<button *ngIf="!hideForms" (click)="hideForms = true" class="btn btn-primary btn-sm">Hide forms</button>
-		<button *ngIf="hideForms && !hideButtons" (click)="hideForms = false" class="btn btn-primary btn-sm">Show forms</button>
-		<button *ngIf="hideForms && !hideButtons" (click)="hideButtons = true" class="btn btn-default btn-sm">Hide buttons</button>
 	</div>
-	<div class="col-lg-2">
+	<div class="col-lg-2 do-not-print">
 		<br>
 		<button (click)="storage['language'] = 'en'" class="btn btn-primary btn-sm">English</button>
 		<button (click)="storage['language'] = 'de'" class="btn btn-primary btn-sm">German</button>
 	</div>
 </div>
 <hr>
-<div class="row" *ngIf="!hideForms">
+<div class="row do-not-print">
 	<div class="col-lg-12 well">
 		<form role="form" (submit)="login()">
 			<div class="form-group">
@@ -28,7 +25,7 @@
 		</form>
 	</div>
 </div>
-<div class="row" *ngIf="!hideForms">
+<div class="row do-not-print">
 	<div class="col-lg-12 well">
 		<form role="form" (submit)="displayTimes()">
 			<div class="form-group">
@@ -50,7 +47,7 @@
 		</form>
 	</div>
 </div>
-<div class="row" *ngIf="!hideForms">
+<div class="row do-not-print">
 	<div class="col-lg-12 well">
 		<form role="form">
 			<div class="form-group">
@@ -98,5 +95,5 @@
 	</div>
 </div>
 <footer>
-	<div id="main_footer" *ngIf="!hideButtons">created by <a href="https://bjoernkw.com" title="Björn Wilmsmann IT Services">Björn Wilmsmann IT Services</a>, {{ currentYear }}.</div>
+	<div id="main_footer" class="do-not-print">created by <a href="https://bjoernkw.com" title="Björn Wilmsmann IT Services">Björn Wilmsmann IT Services</a>, {{ currentYear }}.</div>
 </footer>
